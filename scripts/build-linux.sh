@@ -41,3 +41,7 @@ fi
 nm -D "${OUT_DIR}/libnautilus_workspace.so" | grep -E " nautilus_module_(initialize|list_types|shutdown)$"
 
 echo "Linux release artifacts ready under ${OUT_DIR}"
+
+if [ "${SKIP_LINUX_PACKAGES:-0}" != "1" ]; then
+  bash "${ROOT_DIR}/scripts/package-linux.sh"
+fi

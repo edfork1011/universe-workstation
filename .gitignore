@@ -6,6 +6,9 @@
 
 # --- Packaged build outputs ---
 /dist/
+*.deb
+*.rpm
+*.AppImage
 
 # --- Android / Gradle / Kotlin ---
 /android/.gradle/

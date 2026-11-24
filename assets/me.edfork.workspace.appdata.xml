@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>me.edfork.workspace</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT AND GPL-3.0-or-later</project_license>
+  <name>Universe Workstation</name>
+  <name xml:lang="zh_CN">寰宇工作台</name>
+  <summary>Zero-cloud mTLS 1.3 LAN clipboard sync and file sharing between Linux and Android</summary>
+  <summary xml:lang="zh_CN">基于双向 mTLS 1.3 的 Linux 与 Android 局域网安全互联工具</summary>
+  <description>
+    <p>
+      Universe Workstation connects Linux desktops and rooted Android devices over your local network with Ed25519 signed discovery, 6-digit SAS pairing, pinned TLS 1.3 mutual authentication, lossless text and image clipboard sync, and BLAKE3-verified streaming file transfers.
+    </p>
+  </description>
+  <launchable type="desktop-id">me.edfork.workspace.desktop</launchable>
+  <provides>
+    <binary>me-edfork-workspace</binary>
+    <binary>workspace-share</binary>
+  </provides>
+  <releases>
+    <release version="1.0-ant" date="2026-11-24">
+      <description>
+        <p>Universe Workstation 1.0 Ant initial public release.</p>
+      </description>
+    </release>
+  </releases>
+</component>

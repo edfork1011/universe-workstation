@@ -22,6 +22,12 @@
 > [!CAUTION]
 > **High-Privilege Modifications (Root & Xposed)**: The Android components install a KernelSU module executing a `UID 0` (`root`) background daemon (`workspaced`), launch a `UID 1000` (`system`) binder bridge via `app_process`, modify system `appops` policies, and inject runtime **LibXposed (API 102)** hooks into critical system processes (`com.android.systemui` and `com.coloros.oshare`). Misconfiguration, unsupported ROM builds, or OTA updates may trigger SystemUI crashes or bootloops. Read **[Tested Scope & Compatibility](#tested-scope--compatibility)** and **[Risk Warning & Disclaimer](#risk-warning--disclaimer)** carefully before flashing or enabling modules.
 
+## ScreenShots
+
+![linux-1](./screenshots/linux-1.png)
+
+![android-1](./screenshots/android-1.jpg)
+
 ## Key Features
 
 - **Zero-Trust Local Network Security**
@@ -160,22 +166,42 @@ sudo apt install cargo rustc build-essential pkg-config libgtk-4-dev libadwaita-
 sudo dnf install cargo rust gcc pkgconf-pkg-config gtk4-devel libadwaita-devel nautilus-devel wl-clipboard xclip
 ```
 
-**Build & Install**:
+**Build & Package**:
+
+`./scripts/build-linux.sh` automatically runs Clippy, workspace unit tests, builds the release binaries, and generates `.deb`, `.rpm`, and `.AppImage` packages under `dist/linux/` (you can also run `./scripts/package-linux.sh` separately):
 
 ```bash
-# 1. Run Clippy, workspace tests, and build release artifacts into dist/linux/
+# Build binaries + .deb, .rpm, and .AppImage under dist/linux/
 ./scripts/build-linux.sh
-
-# 2. Install binaries, icons, desktop entry, and systemd user service
-./scripts/install-linux.sh
-
-# 3. Enable and start background tray daemon
-systemctl --user daemon-reload && systemctl --user enable --now me-edfork-workspace.service
-
-# 4. (Optional) Install GNOME Nautilus 4 right-click extension ("Share with Workspace")
-sudo install -m 0755 dist/linux/libnautilus_workspace.so /usr/lib/nautilus/extensions-4/libnautilus_workspace.so
-nautilus -q
 ```
+
+Install using your preferred format:
+
+- **Debian / Ubuntu (`.deb`)**:
+  ```bash
+  sudo apt install ./dist/linux/me-edfork-workspace_1.0-ant_amd64.deb
+  systemctl --user daemon-reload && systemctl --user enable --now me-edfork-workspace.service
+  ```
+- **Fedora / RHEL / openSUSE (`.rpm`)**:
+  ```bash
+  sudo dnf install ./dist/linux/me-edfork-workspace-1.0_ant-1.x86_64.rpm
+  systemctl --user daemon-reload && systemctl --user enable --now me-edfork-workspace.service
+  ```
+- **Portable AppImage (`.AppImage`, no root or `libfuse2` required)**:
+  ```bash
+  chmod +x dist/linux/Universe_Workstation-1.0-ant-x86_64.AppImage
+  ./dist/linux/Universe_Workstation-1.0-ant-x86_64.AppImage
+  ```
+- **User-Local Manual Install (Arch / Custom Prefix)**:
+  ```bash
+  # Install binaries, icons, desktop entry, and systemd user service to ~/.local
+  ./scripts/install-linux.sh
+  systemctl --user daemon-reload && systemctl --user enable --now me-edfork-workspace.service
+  
+  # (Optional) Install GNOME Nautilus 4 right-click extension ("Share with Workspace")
+  sudo install -m 0755 dist/linux/libnautilus_workspace.so /usr/lib/nautilus/extensions-4/libnautilus_workspace.so
+  nautilus -q
+  ```
 
 **Firewall Ports**:
 
