@@ -1,0 +1,11 @@
+id=me.edfork.workspace
+name=寰宇工作台
+version=1.0-ant
+versionCode=100
+author=edfork
+description=寰宇工作台 1.0 Ant · 局域网连接门控剪贴板手势（SystemUI）与 OPPO 分享直传（OShare）模块
+minApiVersion=102
+targetApiVersion=102
+staticScope=false
+autoHotReload=true
+exceptionMode=protective

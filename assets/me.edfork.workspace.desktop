@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=寰宇工作台
+GenericName=LAN Device Bridge
+Comment=Secure LAN clipboard sync and file transfer between Linux and Android
+Exec=me-edfork-workspace
+Icon=me.edfork.workspace
+Terminal=false
+Categories=Network;Utility;
+StartupNotify=false
+StartupWMClass=me.edfork.workspace

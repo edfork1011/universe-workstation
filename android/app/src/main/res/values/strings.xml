@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">寰宇工作台</string>
+    <string name="xposed_description">寰宇工作台 · 局域网连接门控剪贴板手势（SystemUI）与 OPPO 分享直传（OShare）模块</string>
+</resources>
